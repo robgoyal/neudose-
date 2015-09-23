@@ -1,0 +1,43 @@
+
+Part 1: 
+
+Laptop 
+
+
+GUI (tcl/tk/tkiner if using Python): 
+- live-plotting of gyroscope data in each axis
+- live-plot error values from desired settings (PID visuals)
+- command buttons (spin up to n RPM, tilt to m degrees, stop spinngin)
+
+Example Implementation 
+
+write(): - five bytes at a time
+SXXXX - spin to xxx.x RPM
+KKKKK - stop spinning (disable and hand control to CubeSat)
+GXXXX - get x rotation
+GYYYY - get y rotation
+GZZZZ - get z rotation
+read(): get response
+
+Create GUI to live plot values and analyze the behaviour of the cubesat
+
+Radio transfer rate: 250 kbp/s
+Create monitor function to always send gyroscope data 
+
+** Python contains libusb ; easier to implement
+
+
+
+Part 2: 
+
+CC430
+
+sleep() 
+wake up via radio signal
+read command from cc1101
+(sleep, send a parameter(rpm, tilt angles)) ** Example function
+read a parameter, give control to cubesat
+
+read FXAS21002C from SPI 
+
+do PID with GPI0 (dec 24/2 PWM) and (GPIO to air-valve solenoid)
